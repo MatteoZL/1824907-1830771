@@ -1,4 +1,3 @@
-
 function HealthBar() {
     this.kLifeMax = 4;
     this.mLife = this.kLifeMax; //literal value

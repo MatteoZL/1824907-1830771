@@ -14,14 +14,14 @@ MainGameScene.prototype.generateObstacles = function() {
         } else if(randNum < 90){    //30% chance to spawn Wall
             this.mSensorCamera.setWCCenter(-160, 300);
             this.mNext = "Wall";            
-        } else {    //remaining 10% chance to spawn Healing Drone
+        } else {    //remaining 10% chance to spawn Healing Lintern
             this.mSensorCamera.setWCCenter(-180, 300);
-            this.mNext = "Drone";
+            this.mNext = "Lintern";
         }
     }
     
     //Give an alert
-    //Minion, Rock, Wall, Drone - Locations (-1 <20,40,60,80>, 300)
+    //Minion, Rock, Wall, Lintern - Locations (-1 <20,40,60,80>, 300)
     if(this.mCountdown === 0){
         var center = this.mMainCamera.getWCCenter();
         var width = this.mMainCamera.getWCWidth();
@@ -54,14 +54,14 @@ MainGameScene.prototype.generateObstacles = function() {
                     this.mWallLights = 9;
                 }
                 break;
-            case "Drone":
+            case "Lintern":
                 rand = Math.random() * height/1.5;  //restrict spawning area
                 x = center[0] + width/2 + sightBuffer;
                 y = center[1] + height/3 - rand;
-                object = new HealDrone(this.kDroneSprite, x, y, this.mHero, null, this.mGlobalLightSet.getLightAt(this.mDroneLights));                
-                this.mDroneLights++; //increment to next drone light.
-                if (this.mDroneLights > 8) { //past edge of drone light segment
-                    this.mDroneLights = 4;
+                object = new HealLintern(this.kLinternSprite, x, y, this.mHero, null, this.mGlobalLightSet.getLightAt(this.mLinternLights));                
+                this.mLinternLights++; //increment to next drone light.
+                if (this.mLinternLights > 8) { //past edge of drone light segment
+                    this.mLinternLights = 4;
                 }
                 break;
         }

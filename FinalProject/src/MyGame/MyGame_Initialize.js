@@ -40,8 +40,8 @@ MainGameScene.prototype.initialize = function () {
     this.mWall.getXform().setHeight(10);
     gEngine.LayerManager.addToLayer(gEngine.eLayer.eActors, this.mWall);
     
-    this.mDrone = new HealDrone(this.kDroneSprite, -180, 300, null, null, null);
-    gEngine.LayerManager.addToLayer(gEngine.eLayer.eActors, this.mDrone);
+    this.mLintern = new HealLintern(this.kLinternSprite, -180, 300, null, null, null);
+    gEngine.LayerManager.addToLayer(gEngine.eLayer.eActors, this.mLintern);
     
     //Establish movement parameters for the camera
     this.mCamPanSpeed = this.kCamMaxSpeed;

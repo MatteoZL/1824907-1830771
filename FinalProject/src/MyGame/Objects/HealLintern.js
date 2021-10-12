@@ -1,19 +1,19 @@
 
-function HealDrone(sprite, atX, atY, target, normalMap, light) {
+function HealLintern(sprite, atX, atY, target, normalMap, light) {
     if (normalMap === null) {
-        this.mDrone = new LightRenderable(sprite);
+        this.mLintern = new LightRenderable(sprite);
     } else {
-        this.mDrone = new IllumRenderable(sprite, normalMap);
+        this.mLintern = new IllumRenderable(sprite, normalMap);
     }
     
-    this.mDrone.setAnimationSpeed(10);
-    this.mDrone.setSpriteSequence(25, 0, 13, 25, 2, 1);//top, left, width, height, count, padding
+    this.mLintern.setAnimationSpeed(10);
+    this.mLintern.setSpriteSequence(180, 0, 189, 188, 2, 1);//top, left, width, height, count, padding
     
-    this.mDrone.setColor([0, 1, 0, 0]);
-    this.mDrone.getXform().setSize(3, 5);
-    this.mDrone.getXform().setPosition(atX, atY);
+    this.mLintern.setColor([0, 1, 0, 0]);
+    this.mLintern.getXform().setSize(4, 4);
+    this.mLintern.getXform().setPosition(atX, atY);
     
-    GameObject.call(this, this.mDrone); 
+    GameObject.call(this, this.mLintern); 
     
     this.mSpeed = 0;
     this.mTurnSpeed = 0.3;
@@ -21,22 +21,22 @@ function HealDrone(sprite, atX, atY, target, normalMap, light) {
     this.mFollow = false;
     this.mTarget = target;
     this.kHealing = 1;      //heals for 1 point
-    this.mDroneLight = light;
+    this.mLinternLight = light;
 }
-gEngine.Core.inheritPrototype(HealDrone, GameObject);
+gEngine.Core.inheritPrototype(HealLintern, GameObject);
 
-//Retrieves Green Drone Light
-HealDrone.prototype.getLight = function() { return this.mDroneLight;};
+//Retrieves Green Lintern Light
+HealLintern.prototype.getLight = function() { return this.mLinternLight;};
 
-HealDrone.prototype.removeAllLights = function () {
+HealLintern.prototype.removeAllLights = function () {
     GameObject.prototype.removeAllLights.call(this);
     };
 /*
- * The Drone sits at its position until the target touches it.
+ * The Lintern sits at its position until the target touches it.
  * Then it follows the target, but stops moving if it touches the target bounds.
  */
-HealDrone.prototype.update = function() {
-    this.mDrone.updateAnimation();
+HealLintern.prototype.update = function() {
+    this.mLintern.updateAnimation();
     
     //If the hero touched the drone, the drone heals the hero and begins following
     if(this.mFollow === false && this.mTarget !== null){ //limit number of times this needs to be called
@@ -44,11 +44,11 @@ HealDrone.prototype.update = function() {
             this.mFollow = true;
             this.mTarget.heal(1);
             //LIGHT CODE
-            if (this.mDroneLight !== null) {
-                this.mDroneLight.setLightTo(true);
+            if (this.mLinternLight !== null) {
+                this.mLinternLight.setLightTo(true);
             }
             //
-            this.mDrone.setSpriteSequence(25, 28, 13, 25, 3, 1);
+            this.mLintern.setSpriteSequence(180, 0, 189, 188, 2, 1);
         }
     }
     
@@ -71,17 +71,17 @@ HealDrone.prototype.update = function() {
         //simple chase
         vec2.scaleAndAdd(pos, pos, this.getCurrentFrontDir(), this.mSpeed);
         
-        if (this.mDroneLight !== null) {
-            this.mDroneLight.setXPos(this.getXform().getXPos());
-            this.mDroneLight.setYPos(this.getXform().getYPos());
+        if (this.mLinternLight !== null) {
+            this.mLinternLight.setXPos(this.getXform().getXPos());
+            this.mLinternLight.setYPos(this.getXform().getYPos());
         }
         //
     }
     if(this.mLifeTime <= 0){
         //this.setVisibility(false);
         this.mFollow = false;
-        if (this.mDroneLight !== null) {
-                this.mDroneLight.setLightTo(false);
+        if (this.mLinternLight !== null) {
+                this.mLinternLight.setLightTo(false);
             }
         //this.mSpeed = 0;
     }

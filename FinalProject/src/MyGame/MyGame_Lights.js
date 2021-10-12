@@ -43,7 +43,7 @@ MainGameScene.prototype._initializeLights = function () {
             1.2                     // drop off
             );
     this.mGlobalLightSet.addToSet(l);
-    this.mLightCount++; //Counts towards our total lights. Helps the engine remember when spawning lights for Drones and Walls
+    this.mLightCount++; //Counts towards our total lights. Helps the engine remember when spawning lights for Linterns and Walls
     //this.mBg.addLight(l);
     
     //Hero point light - DONE!
@@ -58,7 +58,7 @@ MainGameScene.prototype._initializeLights = function () {
             1.0                 // drop off
             );
     this.mGlobalLightSet.addToSet(l);    
-    this.mLightCount++; //Counts towards our total lights. Helps the engine remember when spawning lights for Drones and Walls
+    this.mLightCount++; //Counts towards our total lights. Helps the engine remember when spawning lights for Linterns and Walls
     //this.mBg.addLight(l);
 
     //Hero Spot light - DONE!
@@ -73,7 +73,7 @@ MainGameScene.prototype._initializeLights = function () {
             1.0                     // drop off
             );
     this.mGlobalLightSet.addToSet(l);
-    this.mLightCount++; //Counts towards our total lights. Helps the engine remember when spawning lights for Drones and Walls
+    this.mLightCount++; //Counts towards our total lights. Helps the engine remember when spawning lights for Linterns and Walls
     //this.mBg.addLight(l);
 
     //Atmospheric lava light
@@ -90,18 +90,18 @@ MainGameScene.prototype._initializeLights = function () {
            //l.setLightTo(false);
     this.mGlobalLightSet.addToSet(l);
     
-    //this.mDroneLight.setYPos(this.getXform().getYPos());
+    //this.mLinternLight.setYPos(this.getXform().getYPos());
     
     //Add the lights to all the objects, skip over sensor light
     var light, i;
     
-    // Allocate Healing Drone Designated Lights
+    // Allocate Healing Lintern Designated Lights
     //LIGHTS 4-8
     for (i = 0; i < 5; i++) {
-        l = this._makeHealDroneLight();
+        l = this._makeHealLinternLight();
         this.mGlobalLightSet.addToSet(l);
     }
-    this.mDroneLights = 4;
+    this.mLinternLights = 4;
     
     // Allocate Wall Column Designated Lights
     //LIGHTS 9-15
@@ -127,7 +127,7 @@ MainGameScene.prototype._initializeLights = function () {
     this.mBg.addLight(light);
     this.mMinion.addLight(light);
     this.mRock.addLight(light);
-    this.mDrone.addLight(light);
+    this.mLintern.addLight(light);
     this.mWall.addLight(light); //wtf?
     
     //Wall Column Light for Wall in Sensor
@@ -139,13 +139,13 @@ MainGameScene.prototype._initializeLights = function () {
     
     /*
     //create 5 drone lights for use
-    this.mDroneLights = new RespawnObjectLightSet(5);
-    for (i = 0; i < this.mDroneLights.numLights(); i++)
+    this.mLinternLights = new RespawnObjectLightSet(5);
+    for (i = 0; i < this.mLinternLights.numLights(); i++)
     {
-        var dLight = this._makeHealDroneLight();
+        var dLight = this._makeHealLinternLight();
         //this.mHero.addLight(dLight);
         //this.mBg.addLight(dLight);
-        this.mDroneLights.addToSet(dLight);
+        this.mLinternLights.addToSet(dLight);
     };
     */
     
@@ -164,10 +164,10 @@ MainGameScene.prototype.updateLights = function() {
     lavaLight.setPos(heroXform.getXPos(), heroXform.getYPos());
 };
 
-//makes all of the Drone Lights for populating the Drone Light Set
-MainGameScene.prototype._makeHealDroneLight = function() {
+//makes all of the Lintern Lights for populating the Lintern Light Set
+MainGameScene.prototype._makeHealLinternLight = function() {
     var l = this._createALight(Light.eLightType.ePointLight,
-            [this.mDrone.getXform().getXPos(), this.mDrone.getXform().getYPos(), 10],       // position
+            [this.mLintern.getXform().getXPos(), this.mLintern.getXform().getYPos(), 10],       // position
             [0, 0, -1],         // Direction (facing "down" toward the bg)
             [0, 1, 0, 1],       // color
             10, 15,              // near and far distances
