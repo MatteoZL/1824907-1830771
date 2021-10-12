@@ -1,15 +1,3 @@
-/* 
- * File: MyGame_Initialize.js
- * By Steven Roberts and Tyler Green
- * 
- * Initializes the main game scene, where the bulk of the Cave Escape! Game takes place
- *  The Main camera holds the actual game.
- *  The Sensor camera is established far outside of game bounds to be used
- *      to display the next object being generated.
- */
-
-
-//What to setup on game load
 MainGameScene.prototype.initialize = function () {
    
     //It's a dark cave!
@@ -38,19 +26,19 @@ MainGameScene.prototype.initialize = function () {
     
     //Create reference objects for the Sensor Camera
     //Parameters: null target (second to last param)
-    this.mBat = new Bat(this.kBatSprite, -120, 300, null, null);
-    this.mBat.setSpeed(0);
-    gEngine.LayerManager.addToLayer(gEngine.eLayer.eActors, this.mBat);
+    this.mMinion = new Minion(this.kMinionSprite, -120, 300, null, null);
+    this.mMinion.setSpeed(0);
+    gEngine.LayerManager.addToLayer(gEngine.eLayer.eActors, this.mMinion);
     
     this.mRock = new Rock(this.kRock, -140, 300, null, this.kRockNormalMap);
     this.mRock.setSpeed(0);
     this.mRock.setRate(0);
     gEngine.LayerManager.addToLayer(gEngine.eLayer.eActors, this.mRock);
     
-    this.mFire = new Fire(this.kColumn, -160, 297.5, null, null, null);
-    this.mFire.setSpeed(0);
-    this.mFire.getXform().setHeight(10);
-    gEngine.LayerManager.addToLayer(gEngine.eLayer.eActors, this.mFire);
+    this.mWall = new Wall(this.kColumn, -160, 297.5, null, null, null);
+    this.mWall.setSpeed(0);
+    this.mWall.getXform().setHeight(10);
+    gEngine.LayerManager.addToLayer(gEngine.eLayer.eActors, this.mWall);
     
     this.mDrone = new HealDrone(this.kDroneSprite, -180, 300, null, null, null);
     gEngine.LayerManager.addToLayer(gEngine.eLayer.eActors, this.mDrone);

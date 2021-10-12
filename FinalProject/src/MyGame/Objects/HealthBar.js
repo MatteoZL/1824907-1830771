@@ -1,11 +1,3 @@
-/* 
- * HealthBar.js
- * Creates and initializes the health bar
- * Contains simple behaviors for the health bar
- *  Should be implemented as part of another object.
- * 
- * By Steven Roberts and Tyler Green
- */
 
 function HealthBar() {
     this.kLifeMax = 4;

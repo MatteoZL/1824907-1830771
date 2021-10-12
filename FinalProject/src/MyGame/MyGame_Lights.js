@@ -43,7 +43,7 @@ MainGameScene.prototype._initializeLights = function () {
             1.2                     // drop off
             );
     this.mGlobalLightSet.addToSet(l);
-    this.mLightCount++; //Counts towards our total lights. Helps the engine remember when spawning lights for Drones and Fires
+    this.mLightCount++; //Counts towards our total lights. Helps the engine remember when spawning lights for Drones and Walls
     //this.mBg.addLight(l);
     
     //Hero point light - DONE!
@@ -58,7 +58,7 @@ MainGameScene.prototype._initializeLights = function () {
             1.0                 // drop off
             );
     this.mGlobalLightSet.addToSet(l);    
-    this.mLightCount++; //Counts towards our total lights. Helps the engine remember when spawning lights for Drones and Fires
+    this.mLightCount++; //Counts towards our total lights. Helps the engine remember when spawning lights for Drones and Walls
     //this.mBg.addLight(l);
 
     //Hero Spot light - DONE!
@@ -73,7 +73,7 @@ MainGameScene.prototype._initializeLights = function () {
             1.0                     // drop off
             );
     this.mGlobalLightSet.addToSet(l);
-    this.mLightCount++; //Counts towards our total lights. Helps the engine remember when spawning lights for Drones and Fires
+    this.mLightCount++; //Counts towards our total lights. Helps the engine remember when spawning lights for Drones and Walls
     //this.mBg.addLight(l);
 
     //Atmospheric lava light
@@ -103,13 +103,13 @@ MainGameScene.prototype._initializeLights = function () {
     }
     this.mDroneLights = 4;
     
-    // Allocate Fire Column Designated Lights
+    // Allocate Wall Column Designated Lights
     //LIGHTS 9-15
     for (i = 0; i < 7; i++) {
-        l = this._makeFireColumnLight();
+        l = this._makeWallColumnLight();
         this.mGlobalLightSet.addToSet(l);
     }
-    this.mFireLights = 9;
+    this.mWallLights = 9;
     
     
     //Assign lights
@@ -125,16 +125,16 @@ MainGameScene.prototype._initializeLights = function () {
     //Add the light specifically for the sensor
     light = this.mGlobalLightSet.getLightAt(0); //The sensor light
     this.mBg.addLight(light);
-    this.mBat.addLight(light);
+    this.mMinion.addLight(light);
     this.mRock.addLight(light);
     this.mDrone.addLight(light);
-    this.mFire.addLight(light); //wtf?
+    this.mWall.addLight(light); //wtf?
     
-    //Fire Column Light for fire in Sensor
-    l = this._makeFireColumnLight();
+    //Wall Column Light for Wall in Sensor
+    l = this._makeWallColumnLight();
     l.setLightTo(true);
     this.mBg.addLight(l);
-    this.mFire.addLight(l);
+    this.mWall.addLight(l);
     
     
     /*
@@ -179,9 +179,9 @@ MainGameScene.prototype._makeHealDroneLight = function() {
     return l;
 };
 
-MainGameScene.prototype._makeFireColumnLight = function() {
+MainGameScene.prototype._makeWallColumnLight = function() {
     var l = this._createALight(Light.eLightType.ePointLight,
-            [this.mFire.getXform().getXPos(), this.mFire.getXform().getYPos(), 10],       // position
+            [this.mWall.getXform().getXPos(), this.mWall.getXform().getYPos(), 10],       // position
             [0, 0, -1],         // Direction (facing "down" toward the bg)
             [1, 0, 0, 1],       // color
             10, 15,              // near and far distances

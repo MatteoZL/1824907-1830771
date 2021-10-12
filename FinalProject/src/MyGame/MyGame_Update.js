@@ -1,13 +1,3 @@
-/* 
- * File: MyGame_Update.js
- * By Steven Roberts and Tyler Green
- * 
- * Updates the main game scene, where the bulk of the Cave Escape! Game takes place
- *  The Main camera holds the actual game.
- *  The Sensor camera is established far outside of game bounds to be used
- *      to display the next object being generated.
- */
-
 //React to Inputs and other progression
 MainGameScene.prototype.update = function () {
     //SCENE TRANSITION TEMPORARY TEST CODE

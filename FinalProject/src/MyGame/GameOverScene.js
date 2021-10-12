@@ -1,11 +1,3 @@
-/* 
- * File: GameOverScene.js
- * By Steven Roberts and Tyler Green
- * 
- * Builds the Game Over Screen, which displays the score and lets you play again.
- * 
- */
-
 function GameOverScene(score) {
     
     //List of Cameras
@@ -51,7 +43,7 @@ GameOverScene.prototype.initialize = function () {
         [0, 0, 900, 600],         // viewport (orgX, orgY, width, height)
         2
     );
-    this.mCamera.setBackgroundColor([0.6, 0.3, 0.0, 1]);
+    this.mCamera.setBackgroundColor([0.21, 0.31, 0, 0.5]);
     
     
     //Initializes FontRenderable: Notably the Color is Set here and only here (for now)
@@ -74,22 +66,32 @@ GameOverScene.prototype.draw = function () {
     //Draws Text Objects. Ugh, Text. Maybe replace with TextureRenderable PNG Art?
     this.mCamera.setupViewProjection();
     this.mMsg.setText("GAME OVER");
-    this.mMsg.getXform().setPosition(25, 60);
+    this.mMsg.getXform().setPosition(32, 75);
     this.mMsg.setTextHeight(7);
     this.mMsg.draw(this.mCamera);
     
-    this.mMsg.setText("Your Score: " + this.mGameScore);
-    this.mMsg.getXform().setPosition(32, 55);
+    this.mMsg.setText("Puntaje: " + this.mGameScore);
+    this.mMsg.getXform().setPosition(40, 60);
     this.mMsg.setTextHeight(3);
     this.mMsg.draw(this.mCamera);
     
-    this.mMsg.setText("Press 'P' to play again");
-    this.mMsg.getXform().setPosition(10, 35);
+    this.mMsg.setText("¡Para jugar usa la");
+    this.mMsg.getXform().setPosition(29, 50);
+    this.mMsg.setTextHeight(4);
+    this.mMsg.draw(this.mCamera);
+
+    this.mMsg.setText("Barra espaciadora!");
+    this.mMsg.getXform().setPosition(29, 45);
     this.mMsg.setTextHeight(4);
     this.mMsg.draw(this.mCamera);
     
-    this.mMsg.setText("Press 'M' to return to the main menu");
-    this.mMsg.getXform().setPosition(10, 30);
+    this.mMsg.setText("Para volver al menú");
+    this.mMsg.getXform().setPosition(29, 30);
+    this.mMsg.setTextHeight(4);
+    this.mMsg.draw(this.mCamera);
+
+    this.mMsg.setText("usa la tecla 'M'");
+    this.mMsg.getXform().setPosition(29, 25);
     this.mMsg.setTextHeight(4);
     this.mMsg.draw(this.mCamera);
 };
@@ -105,7 +107,7 @@ GameOverScene.prototype.update = function () {
     }
     
     //If Spacebar hit, play again
-    if (gEngine.Input.isKeyClicked(gEngine.Input.keys.P)){
+    if (gEngine.Input.isKeyClicked(gEngine.Input.keys.Space)){
         this.mNext = "play";
         gEngine.GameLoop.stop();
     }

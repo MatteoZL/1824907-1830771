@@ -1,8 +1,4 @@
-/* 
- * Author: Tyler Green, Steven Roberts
- * File: Rock.js
- * Purpose: This file contains the Rock object and update logic.
- */
+
 
 function Rock(sprite, atX, atY, target, normalMap) {
     if (normalMap === null) {

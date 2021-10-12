@@ -1,14 +1,4 @@
-/* 
- * Author: Tyler Green, Steven Roberts
- * File: HealDrone.js
- * Purpose: This file contains the Healing Drone object and update logic.
- */
 
-/*
- * A Healing Drone
- *  This object spawns on the far right and can be touched to cause it to follow
- *      the hero object, healing them.
- */
 function HealDrone(sprite, atX, atY, target, normalMap, light) {
     if (normalMap === null) {
         this.mDrone = new LightRenderable(sprite);

@@ -1,15 +1,3 @@
-/* 
- * Hero.js
- * Creates and initializes the controllable Hero
- * Contains simple behaviors for Hero
- * 
- * By Steven Roberts and Tyler Green
- */
-
-/*jslint node: true, vars: true, white: true */
-/*global gEngine, GameObject, LightRenderable, IllumRenderable */
-/* find out more about jslint: http://www.jslint.com/help.html */
-
 "use strict";
 
 function Hero(texture, healthBar, normalMap, sound) {  
@@ -21,11 +9,9 @@ function Hero(texture, healthBar, normalMap, sound) {
     }
     
     this.mHero.setColor([1, 1, 1, 0]);
+    this.mHero.getXform().setSize(9, 12);
     this.mHero.getXform().setPosition(15, 50);
-    this.mHero.getXform().setSize(5, 5);
-    
-    this.mHero.setAnimationSpeed(6);
-    this.mHero.setSpriteSequence(64, 0, 18, 18, 6, 1);
+
     GameObject.call(this, this.mHero);
     
     this.kYDelta = 0.5; //Movement speed on y axis
@@ -72,8 +58,6 @@ Hero.prototype.damage = function (num) {
         this.mIsInvulnerable = true;
         this.getRenderable().setColor([1, 0, 0, 0.4]);
         this.mIFrames = this.kIFrames;
-        //Set Animation Frames to Damaged sequence
-        this.mHero.setSpriteSequence(45, 0, 18, 18, 2, 1);
         this.mDamaged = true; //
         gEngine.AudioClips.playACue(this.kGrunt);
     }
@@ -108,8 +92,7 @@ Hero.prototype.update = function () {
         //If half of I-frames gone, return to normal sprite sequence and regain control of character
         if(this.mIFrames <= this.kIFrames/2 && this.mDamaged){
             this.mSpinning = false;
-            this.mDamaged = false;            
-            this.mHero.setSpriteSequence(64, 0, 18, 18, 6, 1);            
+            this.mDamaged = false;         
         }
         if(this.mIFrames === 0) {
             this.mIsInvulnerable = false;

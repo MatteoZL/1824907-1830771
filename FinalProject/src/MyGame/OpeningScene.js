@@ -1,11 +1,3 @@
-/* 
- * File: GameOverScene.js
- * By Steven Roberts and Tyler Green
- * 
- * Builds the Game Over Screen, which displays the score and lets you play again.
- * 
- */
-
 function OpeningScene() {
     
     //List of Cameras
@@ -55,97 +47,43 @@ OpeningScene.prototype.draw = function () {
     
     //Draws Text Objects. Ugh, Text. Maybe replace with TextureRenderable PNG Art?
     this.mCamera.setupViewProjection();
-    this.mMsg.setText("CAVE ESCAPE!");
-    this.mMsg.getXform().setPosition(25, 75);
+    this.mMsg.setText("Proyecto");
+    this.mMsg.getXform().setPosition(35, 75);
+    this.mMsg.setTextHeight(7);
+    this.mMsg.draw(this.mCamera);    
+    
+    this.mMsg.setText("Final");
+    this.mMsg.getXform().setPosition(42, 70);
     this.mMsg.setTextHeight(7);
     this.mMsg.draw(this.mCamera);
 
-    this.mMsg.setText("Press 'P' to Play");
-    this.mMsg.getXform().setPosition(25, 70);
+    this.mMsg.setText("¡Para jugar usa la");
+    this.mMsg.getXform().setPosition(29, 50);
+    this.mMsg.setTextHeight(4);
+    this.mMsg.draw(this.mCamera);
+
+    this.mMsg.setText("Barra espaciadora!");
+    this.mMsg.getXform().setPosition(29, 45);
     this.mMsg.setTextHeight(4);
     this.mMsg.draw(this.mCamera);
     
-    this.mMsg.setText("Designed and Developed by:");
-    this.mMsg.getXform().setPosition(5, 65);
+    this.mMsg.setText("Kevin Trujillo");
+    this.mMsg.getXform().setPosition(37, 28);
     this.mMsg.setTextHeight(3);
     this.mMsg.draw(this.mCamera);
     
-    this.mMsg.setText("Tyler Green");
-    this.mMsg.getXform().setPosition(5, 61);
+    this.mMsg.setText("Matteo Zuluaga");
+    this.mMsg.getXform().setPosition(37, 23);
     this.mMsg.setTextHeight(3);
     this.mMsg.draw(this.mCamera);
     
-    this.mMsg.setText("Steven Roberts");
-    this.mMsg.getXform().setPosition(5, 57);
-    this.mMsg.setTextHeight(3);
-    this.mMsg.draw(this.mCamera);
-    
-    this.mMsg.setText("With Art and Music from:");
-    this.mMsg.getXform().setPosition(5, 45);
-    this.mMsg.setTextHeight(4);
-    this.mMsg.draw(this.mCamera);
-    
-    this.mMsg.setText("Artists:");
-    this.mMsg.getXform().setPosition(5, 42);
-    this.mMsg.setTextHeight(3);
-    this.mMsg.draw(this.mCamera);
-    
-    this.mMsg.setText("Ariel Williams");
-    this.mMsg.getXform().setPosition(5, 39);
-    this.mMsg.setTextHeight(2);
-    this.mMsg.draw(this.mCamera);
-    
-    this.mMsg.setText("Darya \"MistiqMiu\"");
-    this.mMsg.getXform().setPosition(5, 36);
-    this.mMsg.setTextHeight(2);
-    this.mMsg.draw(this.mCamera);
-    
-    this.mMsg.setText("DezrasDragons");
-    this.mMsg.getXform().setPosition(5, 33);
-    this.mMsg.setTextHeight(2);
-    this.mMsg.draw(this.mCamera);
-    
-    this.mMsg.setText("Mike \"MoikMellah\" Miller");
-    this.mMsg.getXform().setPosition(5, 30);
-    this.mMsg.setTextHeight(2);
-    this.mMsg.draw(this.mCamera);    
-    
-    this.mMsg.setText("NARFNra");
-    this.mMsg.getXform().setPosition(5, 27);
-    this.mMsg.setTextHeight(2);
-    this.mMsg.draw(this.mCamera);
-    
-    this.mMsg.setText("DemonSpawnn")    
-    this.mMsg.getXform().setPosition(5, 24);
-    this.mMsg.setTextHeight(2);
-    this.mMsg.draw(this.mCamera);
-    
-    this.mMsg.setText("Musicians:");
-    this.mMsg.getXform().setPosition(35, 42);
-    this.mMsg.setTextHeight(3);
-    this.mMsg.draw(this.mCamera);
-    
-    this.mMsg.setText("remaxim");
-    this.mMsg.getXform().setPosition(35, 39);
-    this.mMsg.setTextHeight(2);
-    this.mMsg.draw(this.mCamera);
-    
-    this.mMsg.setText("Toni \"Max Gooroo\" Gottschall");
-    this.mMsg.getXform().setPosition(35, 36);
-    this.mMsg.setTextHeight(2);
-    this.mMsg.draw(this.mCamera);
-    
-    this.mMsg.setText("n3b");
-    this.mMsg.getXform().setPosition(35, 33);
-    this.mMsg.setTextHeight(2);
-    this.mMsg.draw(this.mCamera);
 };
 
 
 OpeningScene.prototype.update = function () {
     
     //If Spacebar hit, play again
-    if (gEngine.Input.isKeyClicked(gEngine.Input.keys.P))
+    if (gEngine.Input.isKeyClicked(gEngine.Input.keys.Space))
         gEngine.GameLoop.stop();
 };
 
